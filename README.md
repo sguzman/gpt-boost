@@ -113,31 +113,39 @@ Use the links in the [Download](#-download) section above to install the extensi
 If you want to run the extension locally or modify the code, follow the instructions for your browser below.
 
 #### 📦 For Google Chrome (and Edge/Brave)
-1. Download or clone this repository:
+1. Clone this fork:
    ```bash
-   git clone https://github.com/punassuming/gpt-boost.git
+   git clone https://github.com/sguzman/gpt-boost.git
+   cd gpt-boost
    ```
-2. Open Chrome and navigate to:
+2. Build locally:
+   ```bash
+   pnpm install
+   pnpm run build
+   ```
+3. Open Chrome or Edge and navigate to:
    ```
    chrome://extensions
    ```
-3. Enable **Developer mode** (toggle in the top-right corner)
-4. Click **Load unpacked**
-5. Select the project folder (the one containing `manifest.json`)
-6. Open ChatGPT — the extension will load automatically
-7. Use the extension icon in Chrome to open the settings popup
+4. Enable **Developer mode** (toggle in the top-right corner)
+5. Click **Load unpacked**
+6. Select the project folder (the one containing `manifest.json`)
+7. Open ChatGPT — the extension will load automatically
+8. Use the extension icon in Chrome or Edge to open the settings popup
 
 #### 🦊 For Mozilla Firefox
-1. Download or clone this repository:
+1. Clone this fork:
    ```bash
-   git clone https://github.com/punassuming/gpt-boost.git
+   git clone https://github.com/sguzman/gpt-boost.git
+   cd gpt-boost
    ```
-2. Open Firefox and navigate to:
+2. Build locally with `pnpm install` and `pnpm run build:firefox`.
+3. Open Firefox and navigate to:
    ```
    about:debugging#/runtime/this-firefox
    ```
-3. Click **Load Temporary Add-on...**
-4. Navigate to your project folder and select the `manifest.json` file
+4. Click **Load Temporary Add-on...**
+5. Navigate to your build's Firefox extension folder and select its `manifest.json` file
 
 You're now running GPT Boost locally, and you can make changes in the code!
 
