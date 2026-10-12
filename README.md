@@ -275,41 +275,44 @@ src/
 
 ### Building the Extension
 
+Requires pnpm (package manager pinned in `package.json`). The first `pnpm install` generates `pnpm-lock.yaml`; commit it to the fork so subsequent installations can use `pnpm install --frozen-lockfile`. The npm lockfile has been removed.
+
+
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # One-off production build
-npm run build
+pnpm run build
 
 # Watch mode (rebuilds on file changes)
-npm run dev
+pnpm run dev
 ```
 
 ### Running Tests
 
 ```bash
-npm test
+pnpm test
 # or in restricted environments:
-npx jest --runInBand
+pnpm exec jest --runInBand
 ```
 
 ### Firefox Package
 
 ```bash
 # Build unsigned XPI
-npm run build:firefox
+pnpm run build:firefox
 
 # Sign via AMO (requires AMO_JWT_ISSUER and AMO_JWT_SECRET env vars)
-npm run sign:firefox
+pnpm run sign:firefox
 ```
 
 ### Version Bumping
 
 ```bash
-npm run version:patch   # x.y.Z
-npm run version:minor   # x.Y.0
-npm run version:major   # X.0.0
+pnpm run version:patch   # x.y.Z
+pnpm run version:minor   # x.Y.0
+pnpm run version:major   # X.0.0
 ```
 
 ### Running the Extension During Development

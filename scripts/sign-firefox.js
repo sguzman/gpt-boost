@@ -67,7 +67,7 @@ async function signFirefox() {
 
   if (result.error) {
     if (result.error.code === 'ENOENT') {
-      console.error('web-ext is not installed. Run `npm install` to install dev dependencies.');
+      console.error('web-ext is not installed. Run `pnpm install` to install dev dependencies.');
     } else {
       console.error(result.error.message);
     }

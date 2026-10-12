@@ -95,20 +95,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.18.3
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: npm
 
       - name: Install dependencies
         shell: bash
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
+          if [ -f pnpm-lock.yaml ]; then
+            pnpm install --frozen-lockfile
           else
-            npm install
+            pnpm install --no-frozen-lockfile
           fi
 
       - name: Build Firefox extension package
-        run: npm run build:firefox
+        run: pnpm run build:firefox

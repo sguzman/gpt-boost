@@ -25,6 +25,5 @@ dist/
 build/
 .env
 web-ext-artifacts/
-.npm-cache/
-.npm-cache-*/
+.pnpm-store/
 audit-online.json

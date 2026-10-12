@@ -40,25 +40,25 @@
 - `README.md` and `privacy-policy.md` document usage and privacy.
 
 ## Build, Test, and Development Commands
-- Install dependencies: `npm install` (or `npm ci` when lockfile is present and authoritative).
-- Run bundler for dev: `npm run dev` (builds and watches `src/` files) or `npm run build` (one-off build).
-- Build Firefox package locally: `npm run build:firefox` (automatically runs `npm run build` first).
+- Install dependencies: `pnpm install` (or `pnpm install --frozen-lockfile` when lockfile is present and authoritative).
+- Run bundler for dev: `pnpm run dev` (builds and watches `src/` files) or `pnpm run build` (one-off build).
+- Build Firefox package locally: `pnpm run build:firefox` (automatically runs `pnpm run build` first).
   - Produces a build directory and unsigned XPI under `dist/` using timestamped names.
-  - Stable overwrite mode (no new timestamped artifact names): `npm run build:firefox -- --stable`
-    or set `FIREFOX_BUILD_STABLE=1` for `npm run build:firefox`.
+  - Stable overwrite mode (no new timestamped artifact names): `pnpm run build:firefox -- --stable`
+    or set `FIREFOX_BUILD_STABLE=1` for `pnpm run build:firefox`.
   - Stable mode outputs `dist/firefox-build/` and `dist/gpt-boost-firefox-build.xpi`.
-- Sign Firefox package locally (AMO unlisted flow): `npm run sign:firefox`.
+- Sign Firefox package locally (AMO unlisted flow): `pnpm run sign:firefox`.
   - Requires `AMO_JWT_ISSUER` and `AMO_JWT_SECRET` in environment or `.env`.
   - Signed artifacts are downloaded under `web-ext-artifacts/`.
 - Version bump helpers (lock-step across `package.json`, `manifest.json`, `manifest_firefox.json`):
-  - `npm run version:patch`
-  - `npm run version:minor`
-  - `npm run version:major`
-- Regenerate extension icons from `icons/gpt-boost.png`: `npm run icons:generate`.
+  - `pnpm run version:patch`
+  - `pnpm run version:minor`
+  - `pnpm run version:major`
+- Regenerate extension icons from `icons/gpt-boost.png`: `pnpm run icons:generate`.
 - Chrome/Edge/Brave local dev: open `chrome://extensions`, enable Developer mode, “Load unpacked”, select repo root (with `manifest.json`).
 - Firefox local dev: open `about:debugging#/runtime/this-firefox`, “Load Temporary Add-on…”, pick `manifest.json`.
-- Test suite: `npm test` (Jest).
-  - In restricted environments where worker process spawning is blocked, run `npx jest --runInBand`.
+- Test suite: `pnpm test` (Jest).
+  - In restricted environments where worker process spawning is blocked, run `pnpm exec jest --runInBand`.
 
 ## Changelog Guidelines
 - `CHANGELOG.md` follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) format.
@@ -73,7 +73,7 @@
   - Workflow name in GitHub Actions UI: `PR Build Checks`.
   - Enforces version lock-step across `package.json`, `manifest.json`, and `manifest_firefox.json`.
   - Validates that `CHANGELOG.md` was updated in the PR (bypassed with `skip-changelog` label).
-  - Runs Firefox build validation with `npm run build:firefox`.
+  - Runs Firefox build validation with `pnpm run build:firefox`.
 - Merge-to-main release pipeline: `.github/workflows/bump-manifest-version.yml`
   - Runs when PRs to `main` are merged.
   - Auto-bumps on merge: default is patch; optional labels at merge-time can set `semver:minor` or `semver:major`.
@@ -106,8 +106,8 @@
 ## Testing Guidelines
 - Automated tests exist for DOM utilities (`tests/dom.test.js`), but coverage is still limited.
 - Run:
-  - `npm test` (preferred)
-  - `npx jest --runInBand` (fallback in restricted shells)
+  - `pnpm test` (preferred)
+  - `pnpm exec jest --runInBand` (fallback in restricted shells)
 - Validate changes manually:
   - Load the unpacked extension, open ChatGPT, and scroll through a long thread.
   - Use the popup stats (rendered vs total messages) to confirm virtualization.

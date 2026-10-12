@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Use pnpm for extension development, builds, tests, and GitHub Actions; remove the npm lockfile.
+
+
 ## [1.0.23] - 2026-06-17
 ### Changed
 - Extension minimap panel is now suppressed when ChatGPT's native TOC sidebar is detected, deferring scroll navigation to the native control instead of overlapping it.
